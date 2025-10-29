@@ -111,6 +111,9 @@ private fun ClipForgeNavigation() {
                 onPlayClick = {},
                 onExportClick = {
                     navController.navigate("export")
+                },
+                onFiltersClick = {
+                    navController.navigate("filters")
                 }
             )
         }

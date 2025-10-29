@@ -20,15 +20,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClipForge">
 
-        <!-- Main Activity -->
+        <!-- Compose Activity (Main Launcher) -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ComposeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Main Activity (Legacy) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
 
         <!-- Import Activity -->
         <activity

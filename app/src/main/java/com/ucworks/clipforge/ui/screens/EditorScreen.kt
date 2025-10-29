@@ -2,6 +2,7 @@ package com.ucworks.clipforge.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,6 +14,7 @@ import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -21,13 +23,23 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.ucworks.clipforge.ui.theme.*
 
+// Data classes for timeline clips
+data class TimelineClip(
+    val id: String,
+    val thumbnailUrl: String? = null,
+    val duration: String = "00:00",
+    val startTime: Float = 0f,
+    val track: Int = 0 // 0 = main, 1 = overlay, etc.
+)
+
 @Composable
 fun EditorScreen(
     projectId: String = "",
     projectName: String = "",
     onBackClick: () -> Unit = {},
     onPlayClick: () -> Unit = {},
-    onExportClick: () -> Unit = {}
+    onExportClick: () -> Unit = {},
+    onFiltersClick: () -> Unit = {}
 ) {
     var selectedTab by remember { mutableStateOf("Main") }
     val tabs = listOf("Effects", "Main", "Library")
@@ -51,7 +63,9 @@ fun EditorScreen(
             // Top Bar
             EditorTopBar(
                 title = "Editing Timeline",
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
+                onFiltersClick = onFiltersClick,
+                onExportClick = onExportClick
             )
 
             // Video Preview Area
@@ -169,7 +183,9 @@ fun EditorScreen(
 @Composable
 private fun EditorTopBar(
     title: String = "Editing Timeline",
-    onBackClick: () -> Unit = {}
+    onBackClick: () -> Unit = {},
+    onFiltersClick: () -> Unit = {},
+    onExportClick: () -> Unit = {}
 ) {
     TopAppBar(
         title = {
@@ -190,10 +206,19 @@ private fun EditorTopBar(
             }
         },
         actions = {
-            IconButton(onClick = {}) {
+            // Filters button
+            IconButton(onClick = onFiltersClick) {
                 Icon(
-                    Icons.Default.MoreVert,
-                    contentDescription = "More",
+                    Icons.Default.FilterAlt,
+                    contentDescription = "Filters",
+                    tint = TextPrimary
+                )
+            }
+            // Export button
+            IconButton(onClick = onExportClick) {
+                Icon(
+                    Icons.Default.Upload,
+                    contentDescription = "Export",
                     tint = TextPrimary
                 )
             }
@@ -246,72 +271,131 @@ private fun EffectsTabContent() {
 
 @Composable
 private fun MainTabContent() {
+    // Sample timeline clips matching reference
+    val sampleClips = remember {
+        listOf(
+            TimelineClip(id = "1", duration = "03:58", track = 0),
+            TimelineClip(id = "2", duration = "01:24", track = 1),
+            TimelineClip(id = "3", duration = "04:31", track = 1)
+        )
+    }
+
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(
-            "Main Timeline",
+            "Main",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = TextPrimary,
             modifier = Modifier.padding(bottom = 12.dp)
         )
 
-        // Placeholder for timeline clips
-        Card(
+        // Timeline tracks
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(100.dp)
-                .padding(bottom = 8.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = SurfaceDark
-            ),
-            shape = RoundedCornerShape(8.dp)
+                .padding(bottom = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    "Timeline Clips",
-                    color = TextSecondary
-                )
-            }
+            // Effects track (top)
+            TimelineTrack(
+                trackName = "Effects",
+                clips = sampleClips.filter { it.track == 0 }
+            )
+
+            // Main track
+            TimelineTrack(
+                trackName = "Main",
+                clips = sampleClips.filter { it.track == 1 }
+            )
+
+            // Music track (empty)
+            TimelineTrack(
+                trackName = "Music",
+                clips = emptyList()
+            )
         }
+    }
+}
 
-        Spacer(modifier = Modifier.height(16.dp))
-
+@Composable
+private fun TimelineTrack(
+    trackName: String,
+    clips: List<TimelineClip>
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        // Track label
         Text(
-            "Layers",
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            color = TextPrimary,
-            modifier = Modifier.padding(bottom = 12.dp)
+            trackName,
+            style = MaterialTheme.typography.labelMedium,
+            color = TextSecondary,
+            modifier = Modifier.padding(bottom = 4.dp)
         )
 
-        // Placeholder for layers
-        repeat(2) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(60.dp)
-                    .padding(bottom = 8.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = SurfaceDark
-                ),
-                shape = RoundedCornerShape(8.dp)
-            ) {
+        // Track timeline
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp)
+                .background(SurfaceDarker, RoundedCornerShape(8.dp))
+                .padding(8.dp)
+        ) {
+            if (clips.isNotEmpty()) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .horizontalScroll(rememberScrollState()),
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    clips.forEach { clip ->
+                        TimelineClipCard(clip = clip)
+                    }
+                }
+            } else {
+                // Empty track placeholder
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        "Layer ${it + 1}",
-                        color = TextSecondary
+                        "Empty",
+                        color = TextSecondary.copy(alpha = 0.5f),
+                        style = MaterialTheme.typography.labelSmall
                     )
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun TimelineClipCard(clip: TimelineClip) {
+    Box(
+        modifier = Modifier
+            .width(120.dp)
+            .fillMaxHeight()
+            .clip(RoundedCornerShape(6.dp))
+            .background(
+                brush = Brush.horizontalGradient(
+                    colors = listOf(
+                        Color(0xFFFDB44B),
+                        Color(0xFFEF6C00)
+                    )
+                )
+            )
+            .padding(4.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        // Duration text
+        Text(
+            clip.duration,
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
     }
 }
 
