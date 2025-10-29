@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_dark">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/background_dark"
+            app:title="Export Progress"
+            app:titleTextColor="@color/text_primary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Export Status"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <ProgressBar
+                android:id="@+id/overallProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/progressPercentText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Video Encoding"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <ProgressBar
+                android:id="@+id/videoProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/videoStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Idle"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Audio Encoding"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <ProgressBar
+                android:id="@+id/audioProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/audioStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Idle"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Muxing"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <ProgressBar
+                android:id="@+id/muxingProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/muxingStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Idle"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginBottom="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Elapsed:"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/elapsedTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00:00"
+                    android:textColor="@color/text_primary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Estimated:"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/estimatedTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--:--:--"
+                    android:textColor="@color/text_primary" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/outputPathText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="/path/to/file"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/fileSizeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Size: 0 MB"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/surface_dark">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startExportButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Start"
+            app:backgroundTint="@color/brand_purple"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/pauseExportButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Pause"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_marginHorizontal="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancelExportButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Cancel"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

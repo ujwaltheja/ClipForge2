@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_dark">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/background_dark"
+            app:title="Export"
+            app:titleTextColor="@color/text_primary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        android:id="@+id/exportPanel">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Project Name"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/projectName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter project name"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:paddingHorizontal="12dp"
+                android:background="@color/surface_dark"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Export Location"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/exportPath"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:hint="/storage/..."
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:paddingHorizontal="12dp"
+                    android:background="@color/surface_dark"
+                    android:layout_marginEnd="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBrowse"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="📁"
+                    android:padding="0dp"
+                    app:backgroundTint="@color/brand_purple" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Format"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <RadioButton
+                    android:id="@+id/formatMp4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MP4 (H.264)"
+                    android:textColor="@color/text_primary"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/formatWebm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WebM (VP8)"
+                    android:textColor="@color/text_primary" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quality"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <RadioButton
+                    android:id="@+id/qualityLow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Low (Fast)"
+                    android:textColor="@color/text_primary" />
+
+                <RadioButton
+                    android:id="@+id/qualityMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medium (Balanced)"
+                    android:textColor="@color/text_primary"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/qualityHigh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High (Better)"
+                    android:textColor="@color/text_primary" />
+
+                <RadioButton
+                    android:id="@+id/qualityUltra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ultra (Slow)"
+                    android:textColor="@color/text_primary" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimated Size"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/estimatedSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="~150 MB"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/exportProgressPanel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exporting..."
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp" />
+
+        <ProgressBar
+            android:id="@+id/exportProgressBar"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progress="0"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/progressPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/surface_dark">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:layout_marginEnd="8dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExport"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Export"
+            app:backgroundTint="@color/brand_purple"
+            android:layout_marginStart="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelExport"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Stop"
+            app:backgroundTint="@color/brand_purple"
+            android:layout_marginStart="8dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

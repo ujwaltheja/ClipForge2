@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background_darker">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/effects"
+            app:titleTextColor="@color/text_primary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Search Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_medium"
+        android:background="@color/background_darker"
+        android:spacing="@dimen/padding_small">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_effects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_effects"
+                android:inputType="text"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_tertiary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="@dimen/icon_medium"
+            android:layout_height="@dimen/icon_medium"
+            android:src="@android:drawable/ic_menu_search"
+            android:contentDescription="@string/search"
+            android:background="?attr/selectableItemBackground"
+            android:scaleType="centerInside" />
+    </LinearLayout>
+
+    <!-- Category Chips -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_darker">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/category_chips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium"
+            app:selectionRequired="true"
+            app:singleSelection="true" />
+    </HorizontalScrollView>
+
+    <!-- Effects Grid -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/effects_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/padding_medium"
+        android:clipToPadding="false" />
+
+    <!-- Selected Effect Properties -->
+    <LinearLayout
+        android:id="@+id/effect_properties_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_medium"
+        android:background="@color/background_darker"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/effect_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_title_small"
+            android:layout_marginBottom="@dimen/padding_small" />
+
+        <SeekBar
+            android:id="@+id/effect_intensity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/padding_small" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:spacing="@dimen/padding_small">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cancel_effect"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/cancel"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_apply_effect"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/apply"
+                app:backgroundTint="@color/brand_purple" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

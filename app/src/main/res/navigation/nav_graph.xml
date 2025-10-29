@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/mainFragment">
+
+    <!-- Main Fragment (Home Screen) -->
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.ucworks.clipforge.fragments.MainFragment"
+        android:label="@string/home">
+        <action
+            android:id="@+id/action_main_to_import"
+            app:destination="@id/importFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_main_to_editor"
+            app:destination="@id/editorFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_main_to_settings"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_main_to_ai_assistant"
+            app:destination="@id/aiAssistantFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <!-- Import Fragment -->
+    <fragment
+        android:id="@+id/importFragment"
+        android:name="com.ucworks.clipforge.fragments.ImportFragment"
+        android:label="@string/import_media">
+        <action
+            android:id="@+id/action_import_to_editor"
+            app:destination="@id/editorFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- Editor Fragment -->
+    <fragment
+        android:id="@+id/editorFragment"
+        android:name="com.ucworks.clipforge.fragments.EditorFragment"
+        android:label="@string/editing_timeline">
+        <argument
+            android:name="enginePtr"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_editor_to_effects"
+            app:destination="@id/effectsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_editor_to_audio_mixer"
+            app:destination="@id/audioMixerFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_editor_to_export"
+            app:destination="@id/exportFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <!-- Effects Fragment -->
+    <fragment
+        android:id="@+id/effectsFragment"
+        android:name="com.ucworks.clipforge.fragments.EffectsFragment"
+        android:label="@string/effects">
+        <argument
+            android:name="clipId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="" />
+    </fragment>
+
+    <!-- Audio Mixer Fragment -->
+    <fragment
+        android:id="@+id/audioMixerFragment"
+        android:name="com.ucworks.clipforge.fragments.AudioMixerFragment"
+        android:label="@string/audio_mixing" />
+
+    <!-- Export Fragment -->
+    <fragment
+        android:id="@+id/exportFragment"
+        android:name="com.ucworks.clipforge.fragments.ExportFragment"
+        android:label="@string/export_your_reel">
+        <argument
+            android:name="enginePtr"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+
+    <!-- Settings Fragment -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ucworks.clipforge.fragments.SettingsFragment"
+        android:label="@string/settings" />
+
+    <!-- AI Assistant Fragment -->
+    <fragment
+        android:id="@+id/aiAssistantFragment"
+        android:name="com.ucworks.clipforge.fragments.AIAssistantFragment"
+        android:label="@string/ai_assistant">
+        <argument
+            android:name="enginePtr"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+
+</navigation>

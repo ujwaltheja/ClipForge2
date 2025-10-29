@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background_darker">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/editing_timeline"
+            app:titleTextColor="@color/text_primary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Preview Area -->
+    <FrameLayout
+        android:id="@+id/preview_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/preview_height"
+        android:background="@color/background_darker">
+
+        <ProgressBar
+            android:id="@+id/preview_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/preview_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/video_preview" />
+    </FrameLayout>
+
+    <!-- Playback Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_medium"
+        android:background="@color/background_darker"
+        android:gravity="center_vertical"
+        android:spacing="@dimen/padding_small">
+
+        <ImageButton
+            android:id="@+id/btn_play_pause"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"
+            android:src="@android:drawable/ic_media_play"
+            android:contentDescription="@string/play"
+            android:background="?attr/selectableItemBackground"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_body_medium"
+            android:layout_marginStart="@dimen/padding_small" />
+
+        <SeekBar
+            android:id="@+id/timeline_seek"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/padding_small" />
+
+        <TextView
+            android:id="@+id/total_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_body_medium" />
+    </LinearLayout>
+
+    <!-- Tabs for Editing Tools -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/editor_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_darker"
+        app:tabTextColor="@color/text_secondary"
+        app:tabSelectedTextColor="@color/brand_purple"
+        app:tabIndicatorColor="@color/brand_purple">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/effects" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/library_tab" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- Timeline View -->
+    <HorizontalScrollView
+        android:id="@+id/timeline_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/timeline_height"
+        android:background="@color/background_darker">
+
+        <LinearLayout
+            android:id="@+id/timeline_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_medium" />
+    </HorizontalScrollView>
+
+    <!-- Tool Panel (Dynamic Content) -->
+    <FrameLayout
+        android:id="@+id/tool_panel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Bottom Action Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_medium"
+        android:background="@color/background_darker"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_undo"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/undo"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_export"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/export_your_reel"
+            app:backgroundTint="@color/brand_purple" />
+    </LinearLayout>
+
+</LinearLayout>

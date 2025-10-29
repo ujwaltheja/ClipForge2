@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/effect_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_small"
+    app:cardBackgroundColor="@color/background_darker"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="@dimen/card_corner_radius">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_medium">
+
+        <!-- Effect Preview Placeholder -->
+        <ImageView
+            android:id="@+id/effect_preview"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:contentDescription="@string/effect_preview"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:tint="@color/text_tertiary" />
+
+        <!-- Effect Name -->
+        <TextView
+            android:id="@+id/effect_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_body_large"
+            android:textStyle="bold" />
+
+        <!-- Category -->
+        <TextView
+            android:id="@+id/effect_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textColor="@color/brand_purple"
+            android:textSize="@dimen/text_label_small" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/effect_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:ellipsize="end"
+            android:lines="2"
+            android:text="Effect description"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_label_small" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

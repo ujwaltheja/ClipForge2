@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background_darker">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/export_your_reel"
+            app:titleTextColor="@color/text_primary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ScrollView for Form -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_medium">
+
+            <!-- Project Info Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/project_info"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_title_small"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/padding_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_medium">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/project_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/project_name"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_tertiary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Format Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/format"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_title_small"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/padding_small" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/format_mp4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/format_mp4"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="@dimen/padding_small"
+                android:checked="true" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/format_webm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/format_webm"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="@dimen/padding_medium" />
+
+            <!-- Quality Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quality"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_title_small"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/padding_small" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/quality_low"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quality_low"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="@dimen/padding_small" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/quality_medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quality_medium"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="@dimen/padding_small"
+                android:checked="true" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/quality_high"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quality_high"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="@dimen/padding_small" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/quality_ultra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quality_ultra"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="@dimen/padding_medium" />
+
+            <!-- Export Destination -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/export_to"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_title_small"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/padding_small" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:spacing="@dimen/padding_small"
+                android:layout_marginBottom="@dimen/padding_medium">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/export_path"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/select_location"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_tertiary"
+                        android:enabled="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_browse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:text="@string/browse"
+                    app:icon="@android:drawable/ic_menu_more" />
+            </LinearLayout>
+
+            <!-- Estimated File Size -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/background_darker"
+                android:padding="@dimen/padding_medium"
+                android:layout_marginBottom="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/estimated_size"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/estimated_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="~250 MB"
+                    android:textColor="@color/text_secondary" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Export Progress (Initially Hidden) -->
+    <LinearLayout
+        android:id="@+id/export_progress_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_medium"
+        android:background="@color/background_darker"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exporting"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_title_small"
+            android:layout_marginBottom="@dimen/padding_small" />
+
+        <ProgressBar
+            android:id="@+id/export_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="0"
+            android:max="100"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            
+            android:layout_marginTop="@dimen/padding_small">
+
+            <TextView
+                android:id="@+id/progress_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textColor="@color/text_secondary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cancel_export"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/cancel"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bottom Action Bar -->
+    <LinearLayout
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_medium"
+        android:background="@color/background_darker"
+        android:gravity="end"
+        android:spacing="@dimen/padding_small">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/cancel"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_export"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/export"
+            app:backgroundTint="@color/brand_purple" />
+    </LinearLayout>
+
+</LinearLayout>
