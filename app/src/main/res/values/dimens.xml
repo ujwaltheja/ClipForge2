@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Padding & Margins -->
-    <dimen name="padding_xsmall">4dp</dimen>
+    <!-- Spacing -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    
+    <!-- Text sizes -->
+    <dimen name="text_size_xs">10sp</dimen>
+    <dimen name="text_size_sm">12sp</dimen>
+    <dimen name="text_size_md">14sp</dimen>
+    <dimen name="text_size_lg">16sp</dimen>
+    <dimen name="text_size_xl">20sp</dimen>
+    <dimen name="text_size_xxl">24sp</dimen>
+    <dimen name="text_size_title">32sp</dimen>
+    
+    <!-- Corner radius -->
+    <dimen name="corner_radius_sm">4dp</dimen>
+    <dimen name="corner_radius_md">8dp</dimen>
+    <dimen name="corner_radius_lg">16dp</dimen>
+    <dimen name="card_corner_radius">12dp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="elevation_sm">2dp</dimen>
+    <dimen name="elevation_md">4dp</dimen>
+    <dimen name="elevation_lg">8dp</dimen>
+    
+    <!-- Timeline -->
+    <dimen name="timeline_height">120dp</dimen>
+    <dimen name="timeline_track_height">80dp</dimen>
+    <dimen name="timeline_clip_min_width">40dp</dimen>
+    <dimen name="timeline_playhead_width">2dp</dimen>
+    
+    <!-- Effects grid -->
+    <dimen name="effect_item_size">80dp</dimen>
+    <dimen name="effect_item_margin">8dp</dimen>
+    
+    <!-- Preview -->
+    <dimen name="preview_min_height">200dp</dimen>
+    
+    <!-- Button -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_min_width">88dp</dimen>
+    
+    <!-- FAB -->
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Additional dimens -->
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
-    <dimen name="padding_large">24dp</dimen>
-    <dimen name="padding_xlarge">32dp</dimen>
-
-    <!-- Icon Sizes -->
-    <dimen name="icon_small">20dp</dimen>
-    <dimen name="icon_medium">24dp</dimen>
-    <dimen name="icon_large">32dp</dimen>
     <dimen name="icon_xlarge">48dp</dimen>
-
-    <!-- Button Sizes -->
-    <dimen name="button_height">48dp</dimen>
-    <dimen name="button_height_small">40dp</dimen>
-    <dimen name="button_radius">12dp</dimen>
-
-    <!-- Text Sizes -->
-    <dimen name="text_display_large">32sp</dimen>
-    <dimen name="text_headline_large">28sp</dimen>
-    <dimen name="text_headline_medium">24sp</dimen>
-    <dimen name="text_title_large">22sp</dimen>
-    <dimen name="text_title_medium">18sp</dimen>
-    <dimen name="text_title_small">17sp</dimen>
     <dimen name="text_body_large">16sp</dimen>
-    <dimen name="text_body_medium">14sp</dimen>
-    <dimen name="text_body_small">12sp</dimen>
+    <dimen name="text_label_small">12sp</dimen>
     <dimen name="text_label_large">14sp</dimen>
-    <dimen name="text_label_medium">12sp</dimen>
-    <dimen name="text_label_small">11sp</dimen>
-
-    <!-- Component Sizes -->
-    <dimen name="card_corner_radius">12dp</dimen>
-    <dimen name="card_elevation">4dp</dimen>
-    <dimen name="divider_height">1dp</dimen>
-
-    <!-- Video Preview -->
-    <dimen name="preview_height">240dp</dimen>
-    <dimen name="timeline_height">120dp</dimen>
-    <dimen name="clip_card_height">80dp</dimen>
-    <dimen name="effect_card_size">120dp</dimen>
-
-    <!-- Dialog Sizes -->
-    <dimen name="dialog_width">90%</dimen>
-    <dimen name="dialog_max_width">600dp</dimen>
-
-    <!-- Toolbar -->
-    <dimen name="toolbar_height">56dp</dimen>
-    <dimen name="app_bar_elevation">4dp</dimen>
-
-    <!-- Touch Target -->
-    <dimen name="touch_target_min">48dp</dimen>
-    <dimen name="touch_target_recommended">56dp</dimen>
+    <dimen name="icon_medium">24dp</dimen>
+    <dimen name="text_title_small">18sp</dimen>
+    <dimen name="text_body_medium">14sp</dimen>
+    <dimen name="icon_large">24dp</dimen>
 </resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Video"
+        android:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="default_quality"
+            android:title="Default Export Quality"
+            android:entries="@array/quality_names"
+            android:entryValues="@array/quality_values"
+            android:defaultValue="high"/>
+
+        <ListPreference
+            android:key="default_codec"
+            android:title="Default Codec"
+            android:entries="@array/codec_names"
+            android:entryValues="@array/codec_values"
+            android:defaultValue="h264"/>
+
+        <SwitchPreferenceCompat
+            android:key="hardware_acceleration"
+            android:title="Hardware Acceleration"
+            android:summary="Use GPU for faster encoding"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Performance"
+        android:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="preview_quality"
+            android:title="Preview Quality"
+            android:entries="@array/preview_quality_names"
+            android:entryValues="@array/preview_quality_values"
+            android:defaultValue="medium"/>
+
+        <SwitchPreferenceCompat
+            android:key="show_fps"
+            android:title="Show FPS Counter"
+            android:summary="Display frame rate during preview"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Storage"
+        android:iconSpaceReserved="false">
+
+        <Preference
+            android:key="cache_size"
+            android:title="Cache Size"
+            android:summary="Calculate cache size"/>
+
+        <Preference
+            android:key="clear_cache"
+            android:title="Clear Cache"
+            android:summary="Free up storage space"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="About"
+        android:iconSpaceReserved="false">
+
+        <Preference
+            android:key="version"
+            android:title="Version"
+            android:summary="1.0.0"/>
+
+        <Preference
+            android:key="licenses"
+            android:title="Open Source Licenses"
+            android:summary="View third-party licenses"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -37,20 +37,9 @@ class RecentProjectsAdapter(
 
         fun bind(project: RecentProject) {
             with(binding) {
-                projectName.text = project.name
-                projectResolution.text = project.resolution
-                projectDuration.text = project.duration
-                projectClips.text = "${project.clipCount} clips"
-
-                // Format last modified date
-                val lastModified = formatTime(project.lastModified)
-                projectModified.text = "Modified: $lastModified"
-
-                // Load thumbnail (would be async in real app)
-                if (project.thumbnailPath != null) {
-                    Timber.d("Loading project thumbnail: ${project.thumbnailPath}")
-                    // projectThumbnail.setImageURI(Uri.parse(project.thumbnailPath))
-                }
+                tvProjectName.text = project.name
+                tvProjectInfo.text = "${project.resolution} • ${project.clipCount} clips"
+                tvProjectDate.text = "Modified: ${formatTime(project.lastModified)}"
 
                 // Click listeners
                 root.setOnClickListener {

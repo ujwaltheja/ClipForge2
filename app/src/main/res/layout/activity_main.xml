@@ -4,116 +4,210 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background_dark">
+    android:background="@color/background_primary"
+    android:fitsSystemWindows="true">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <!-- Header with Logo -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_dark"
-        app:elevation="4dp">
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@color/background_dark"
-            app:title="ClipForge"
-            app:titleTextColor="@color/text_primary" />
+        <!-- Clipforge Logo -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_app_logo"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="36sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
 
+    <!-- Main Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/background_dark">
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="24dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ClipForge"
-                android:textSize="32sp"
-                android:textColor="@color/text_primary"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp" />
-
+            <!-- New Project Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/newProjectButton"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="New Project"
-                app:backgroundTint="@color/brand_purple"
-                android:layout_marginBottom="24dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Recent"
+                android:layout_height="56dp"
+                android:text="+ New Project"
                 android:textSize="18sp"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="32dp"
+                app:backgroundTint="@color/accent_primary"
+                android:textAllCaps="false" />
+
+            <!-- Get Started Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get Started"
+                android:textSize="24sp"
                 android:textColor="@color/text_primary"
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/recentProject1"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/surface_dark"
-                app:cardCornerRadius="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recent Project"
-                    android:textColor="@color/text_primary"
-                    android:layout_gravity="center" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/importMediaButton"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="Import Media"
-                app:backgroundTint="@color/brand_purple"
-                android:layout_marginBottom="8dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/recordButton"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="Record"
-                app:backgroundTint="@color/brand_purple"
-                android:layout_marginBottom="8dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/templatesButton"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="Templates"
-                app:backgroundTint="@color/brand_purple"
-                android:layout_marginBottom="16dp" />
-
-            <TextView
-                android:id="@+id/projectStats"
+            <!-- Action Cards Row -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:layout_marginTop="16dp" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="32dp">
+
+                <!-- Import Media Card -->
+                <LinearLayout
+                    android:id="@+id/importCard"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/card_background"
+                    android:padding="12dp"
+                    android:layout_marginEnd="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_add"
+                        android:tint="@color/accent_primary"
+                        android:contentDescription="Import" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Import Media"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <!-- Record Card -->
+                <LinearLayout
+                    android:id="@+id/recordCard"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/card_background"
+                    android:padding="12dp"
+                    android:layout_marginHorizontal="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_add"
+                        android:tint="@color/accent_secondary"
+                        android:contentDescription="Record" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Record Video"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <!-- Templates Card -->
+                <LinearLayout
+                    android:id="@+id/templatesCard"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/card_background"
+                    android:padding="12dp"
+                    android:layout_marginStart="8dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_add"
+                        android:tint="@color/accent_accent"
+                        android:contentDescription="Templates" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trending Templates"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Recent Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Recent"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/searchButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_add"
+                    android:scaleType="centerInside"
+                    android:tint="@color/text_primary"
+                    android:contentDescription="Search" />
+            </LinearLayout>
+
+            <!-- Recent Projects Grid -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recentProjectsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
-
     </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/background_secondary"
+        app:menu="@menu/menu_main" />
 
 </LinearLayout>

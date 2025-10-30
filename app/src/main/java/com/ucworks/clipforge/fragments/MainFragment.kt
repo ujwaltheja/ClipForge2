@@ -15,7 +15,7 @@ import com.ucworks.clipforge.AIAssistantActivity
 import com.ucworks.clipforge.EditorActivity
 import com.ucworks.clipforge.ImportActivity
 import com.ucworks.clipforge.R
-import com.ucworks.clipforge.SettingsActivity
+import com.ucworks.clipforge.ui.SettingsActivity
 import com.ucworks.clipforge.adapters.RecentProjectsAdapter
 import com.ucworks.clipforge.databinding.FragmentMainBinding
 import com.ucworks.clipforge.models.RecentProject
@@ -275,8 +275,8 @@ class MainFragment : Fragment() {
                 startActivity(Intent(requireContext(), SettingsActivity::class.java))
                 true
             }
-            R.id.action_about -> {
-                Timber.d("About menu clicked")
+            R.id.action_help -> {
+                Timber.d("Help menu clicked")
                 showAboutDialog()
                 true
             }

@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.parcelize")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
@@ -73,6 +74,17 @@ dependencies {
 
     // Coil for image loading in Compose
     implementation("io.coil-kt:coil-compose:2.2.2")
+
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+
+    // Preferences
+    implementation("androidx.preference:preference-ktx:1.2.0")
+
+    // Splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Logging
     implementation("com.jakewharton.timber:timber:5.0.1")

@@ -12,7 +12,15 @@
       "Bash(.gradlew clean build:*)",
       "Bash(gradlew.bat clean build:*)",
       "Bash(cmd /c \"gradlew.bat clean build\")",
-      "Bash(./gradlew.bat:*)"
+      "Bash(./gradlew.bat:*)",
+      "Bash(cmd.exe /c:*)",
+      "Bash(gradlew.bat assembleDebug)",
+      "Bash(gradlew.bat clean:*)",
+      "Read(//d/**)",
+      "Bash(cmd /c \"gradlew.bat compileDebugKotlin --stacktrace 2>&1\")",
+      "Bash(cmd /c \"gradlew.bat compileDebugKotlin 2>&1\")",
+      "Bash(cmd /c \"gradlew.bat compileDebugKotlin 2>&1 > build_output.txt\")",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": []

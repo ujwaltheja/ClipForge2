@@ -1,161 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_dark">
+    android:background="@color/background_primary">
 
-    <!-- Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/background_darker">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/editing_timeline"
-            app:titleTextColor="@color/text_primary" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- Preview Area -->
-    <FrameLayout
-        android:id="@+id/preview_container"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/preview_height"
-        android:background="@color/background_darker">
-
-        <ProgressBar
-            android:id="@+id/preview_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/preview_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/video_preview" />
-    </FrameLayout>
-
-    <!-- Playback Controls -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/padding_medium"
-        android:background="@color/background_darker"
-        android:gravity="center_vertical"
-        android:spacing="@dimen/padding_small">
-
-        <ImageButton
-            android:id="@+id/btn_play_pause"
-            android:layout_width="@dimen/icon_large"
-            android:layout_height="@dimen/icon_large"
-            android:src="@android:drawable/ic_media_play"
-            android:contentDescription="@string/play"
-            android:background="?attr/selectableItemBackground"
-            android:scaleType="centerInside" />
-
-        <TextView
-            android:id="@+id/current_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00:00"
-            android:textColor="@color/text_secondary"
-            android:textSize="@dimen/text_body_medium"
-            android:layout_marginStart="@dimen/padding_small" />
-
-        <SeekBar
-            android:id="@+id/timeline_seek"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="@dimen/padding_small" />
-
-        <TextView
-            android:id="@+id/total_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00:00"
-            android:textColor="@color/text_secondary"
-            android:textSize="@dimen/text_body_medium" />
-    </LinearLayout>
-
-    <!-- Tabs for Editing Tools -->
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/editor_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background_darker"
-        app:tabTextColor="@color/text_secondary"
-        app:tabSelectedTextColor="@color/brand_purple"
-        app:tabIndicatorColor="@color/brand_purple">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/effects" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/library_tab" />
-    </com.google.android.material.tabs.TabLayout>
-
-    <!-- Timeline View -->
-    <HorizontalScrollView
-        android:id="@+id/timeline_scroll"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/timeline_height"
-        android:background="@color/background_darker">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/timeline_container"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_medium" />
-    </HorizontalScrollView>
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:orientation="horizontal">
 
-    <!-- Tool Panel (Dynamic Content) -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:title="@string/editor_title" />
+
+            <ImageButton
+                android:id="@+id/btn_undo"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:src="@drawable/ic_app_logo"
+                android:contentDescription="Undo" />
+
+            <ImageButton
+                android:id="@+id/btn_redo"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:src="@drawable/ic_app_logo"
+                android:contentDescription="Redo" />
+
+            <ImageButton
+                android:id="@+id/btn_export"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:src="@drawable/ic_app_logo"
+                android:contentDescription="Export" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <FrameLayout
+            android:id="@+id/preview_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/timeline_recycler">
+
+            <TextView
+                android:id="@+id/tv_current_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="00:00:00"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_fps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_gravity="end"
+                android:text="60 FPS"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp" />
+
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/timeline_recycler"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/controls_container"/>
+        
+        <HorizontalScrollView
+            android:id="@+id/controls_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_play"/>
+                <ImageButton
+                    android:id="@+id/btn_import"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add"/>
+                <ImageButton
+                    android:id="@+id/btn_split"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_split"/>
+                 <ImageButton
+                    android:id="@+id/btn_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_delete"/>
+                <ImageButton
+                    android:id="@+id/btn_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_speed"/>
+                <ImageButton
+                    android:id="@+id/btn_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_volume"/>
+                <ImageButton
+                    android:id="@+id/btn_effects"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_effects"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <FrameLayout
-        android:id="@+id/tool_panel"
+        android:id="@+id/effects_bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="300dp"
+        android:background="@color/background_secondary"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <!-- Bottom Action Bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/padding_medium"
-        android:background="@color/background_darker"
-        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/effects_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_undo"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height"
-            android:text="@string/undo"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+    </FrameLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_export"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height"
-            android:text="@string/export_your_reel"
-            app:backgroundTint="@color/brand_purple" />
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

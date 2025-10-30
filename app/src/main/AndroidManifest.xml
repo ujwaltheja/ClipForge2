@@ -20,57 +20,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClipForge">
 
-        <!-- Main Activity -->
+        <!-- Splash Activity -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ui.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ClipForge.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- Import Activity -->
+        <!-- Onboarding Activity -->
         <activity
-            android:name=".ImportActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:name=".ui.OnboardingActivity"
+            android:exported="false" />
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
 
         <!-- Editor Activity -->
         <activity
             android:name=".EditorActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-
-        <!-- Effects Activity -->
-        <activity
-            android:name=".EffectsActivity"
-            android:exported="false"
-            android:parentActivityName=".EditorActivity" />
-
-        <!-- Audio Mixer Activity -->
-        <activity
-            android:name=".AudioMixerActivity"
-            android:exported="false"
-            android:parentActivityName=".EditorActivity" />
-
-        <!-- Export Activity -->
-        <activity
-            android:name=".ExportActivity"
-            android:exported="false"
-            android:parentActivityName=".EditorActivity" />
+            android:exported="false" />
 
         <!-- Settings Activity -->
         <activity
-            android:name=".SettingsActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
-
-        <!-- AI Assistant Activity -->
-        <activity
-            android:name=".AIAssistantActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:name=".ui.SettingsActivity"
+            android:exported="false" />
 
     </application>
 
